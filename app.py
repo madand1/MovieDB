@@ -1,19 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for
 import requests
 import os
-from dotenv import load_dotenv
-
 # Inicializar la aplicación Flask
 app = Flask(__name__)
-
-# Cargar las variables de entorno desde el archivo dotenv.env
-load_dotenv(dotenv_path="dotenv.env")
 
 # URL base para la API de TheMovieDB
 url_base = "https://api.themoviedb.org/3/"
 
-# Obtener la clave de la API desde las variables de entorno
-api_key = os.getenv("api_key")
+# Definir la clave de la API y el código de país directamente en el código
+api_key = "1b5e4c5722010f132052504f17ae4c6c"
+country_code = "ES"
 
 # Definir la ruta de inicio
 @app.route('/', methods=["GET", "POST"])
@@ -44,5 +40,5 @@ def buscar_pelicula(titulo):
         return render_template("error.html", error=True)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT',5000))
-    app.run("0.0.0.0", debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run("0.0.0.0", port=port, debug=True)
