@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
 import os
+from flask import Flask, render_template, request, redirect, url_for
 from tmdb import buscar_pelicula  # Importar la función desde tmdb.py
 
 # Inicializar la aplicación Flask
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 # Definir la ruta de inicio
 @app.route('/', methods=["GET", "POST"])
