@@ -1,15 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
-import requests
 import os
+from tmdb import buscar_pelicula  # Importar la función desde tmdb.py
+
 # Inicializar la aplicación Flask
 app = Flask(__name__)
-
-# URL base para la API de TheMovieDB
-url_base = "https://api.themoviedb.org/3/"
-
-# Definir la clave de la API y el código de país directamente en el código
-api_key = "1b5e4c5722010f132052504f17ae4c6c"
-country_code = "ES"
 
 # Definir la ruta de inicio
 @app.route('/', methods=["GET", "POST"])
@@ -19,21 +13,16 @@ def index():
         titulo = request.form.get('title')
         if titulo:
             # Redirigir a la ruta para mostrar los resultados de la búsqueda
-            return redirect(url_for('buscar_pelicula', titulo=titulo))
+            return redirect(url_for('buscar_pelicula_route', titulo=titulo))
     # Si es una solicitud GET o no se proporcionó un título, renderizar el formulario de búsqueda
     return render_template("index.html")
 
 # Definir la ruta para buscar películas
 @app.route('/pelicula/<titulo>')
-def buscar_pelicula(titulo):
-    # Parámetros de la solicitud a la API de TheMovieDB
-    payload = {'api_key': api_key, 'query': titulo, 'language': 'en-EN'}
-    # Realizar la solicitud GET a la API
-    r = requests.get(url_base + 'search/movie', params=payload)
-    if r.status_code == 200:
-        # Si la solicitud es exitosa, obtener los resultados y mostrarlos en la plantilla
-        data = r.json()
-        peliculas = data.get('results', [])
+def buscar_pelicula_route(titulo):
+    peliculas = buscar_pelicula(titulo)
+    if peliculas is not None:
+        # Si la solicitud es exitosa, mostrar los resultados en la plantilla
         return render_template("pelicula.html", peliculas=peliculas)
     else:
         # Si hay un error en la solicitud, mostrar un mensaje de error en la plantilla
