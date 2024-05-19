@@ -1,24 +1,23 @@
-from flask import Flask, render_template, request, redirect, url_for
-import tmdb
+import requests
 
-app = Flask(__name__)
+# URL base para la API de TheMovieDB
+url_base = "https://api.themoviedb.org/3/"
+# Definir la clave de la API y el código de país directamente en el código
+api_key = "1b5e4c5722010f132052504f17ae4c6c"
+country_code = "ES"
+def buscar_peliculas(titulo):
+    url = f'{url_base}/search/movie'
+    params = {
+        'api_key': api_key,
+        'query': titulo,
+    }
+    response = requests.get(url, params=params)
+    return response.json().get('results', [])
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        title = request.form.get('title')
-        peliculas = tmdb.buscar_peliculas(title)
-        return render_template('pelicula.html', peliculas=peliculas)
-    return render_template('index.html')
-
-@app.route('/pelicula/<int:id>')
-def pelicula(id):
-    pelicula = tmdb.obtener_detalle_pelicula(id)
-    return render_template('pelicula.html', pelicula=pelicula)
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('error.html'), 404
-
-if __name__ == '__main__':
-    app.run(debug=True)
+def obtener_detalle_pelicula(id_pelicula):
+    url = f'{url_base}/movie/{id_pelicula}'
+    params = {
+        'api_key': api_key,
+    }
+    response = requests.get(url, params=params)
+    return response.json()
