@@ -29,13 +29,17 @@
             </div>
             <div class="contenido-principal">
                 <h1>Detalles de la Película</h1>
-                {% for pelicula in peliculas %}
-                    <div class="pelicula-detalle">
-                        <h2>{{ pelicula.title }}</h2>
-                        <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }} Poster">
-                        <p>{{ pelicula.overview }}</p>
-                    </div>
-                {% endfor %}
+                {% if peliculas %}
+                    {% for pelicula in peliculas %}
+                        <div class="pelicula-detalle">
+                            <h2>{{ pelicula.title }}</h2>
+                            <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }} Poster">
+                            <p>{{ pelicula.overview }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No se encontraron detalles de la película.</p>
+                {% endif %}
             </div>
         </div>
     </main>
