@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Buscar Actores</title>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{{ url_for('static', filename='videos/background-video.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <div class="contenedor">
+            <h2 class="logotipo">MovieDB</h2>
+            <nav>
+                <a href="{{ url_for('index') }}">Buscar Películas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="contenedor">
+            <div class="imagenes-lado-izquierdo">
+                <!-- Imágenes -->
+            </div>
+            <div class="contenido-principal">
+                <h3 class="titulo">Buscar Actores</h3>
+                <form action="/buscar_actores" method="post" class="formulario-busqueda">
+                    <input type="text" name="name" placeholder="Nombre del actor" class="input-busqueda">
+                    <button type="submit" class="boton"><i class="fas fa-search"></i>Buscar</button>
+                </form>
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+                {% if actores %}
+                    <div class="actores-grid">
+                        {% for actor in actores %}
+                            <div class="actor-item">
+                                <a href="{{ url_for('detalle_actor', id=actor.id) }}">
+                                    <img src="https://image.tmdb.org/t/p/w500{{ actor.profile_path }}" alt="{{ actor.name }}">
+                                    <h2>{{ actor.name }}</h2>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

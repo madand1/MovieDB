@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Detalles del Actor</title>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="{{ url_for('static', filename='videos/background-video.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <div class="contenedor">
+            <h2 class="logotipo">MovieDB</h2>
+            <nav>
+                <!-- Navegación -->
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="contenedor">
+            <div class="imagenes-lado-izquierdo">
+                
+            </div>
+            <div class="contenido-principal">
+                <h1>Detalles del Actor</h1>
+                {% if actor %}
+                    <div class="actor-detalle">
+                        <h2>{{ actor.name }}</h2>
+                        <img src="https://image.tmdb.org/t/p/w500{{ actor.profile_path }}" alt="{{ actor.name }}">
+                        <p>Fecha de Nacimiento: {{ actor.birthday }}</p>
+                        <p>Biografía: {{ actor.biography }}</p>
+                        <p>Filmografía:</p>
+                        <ul>
+                            {% for movie in actor.known_for %}
+                                <li>{{ movie.title }} ({{ movie.release_date }})</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% else %}
+                    <p>No se encontraron detalles del actor.</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>
