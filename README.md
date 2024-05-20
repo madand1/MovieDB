@@ -20,7 +20,7 @@ Se va a realizar una aplicación web con las siguientes características:
 
 - **Vista de Lista:** Muestra una lista de películas que coinciden con el término de búsqueda.
 - **Vista de Detalle:** Muestra información detallada sobre una película seleccionada.
-- **Formulario de Búsqueda:** Permite a los usuarios buscar películas por título.
+- **Formularios de Búsquedas:** Permite a los usuarios buscar películas por título o bien buscar a los actores.
 - **Manejo de Errores:** Muestra una página de error personalizada cuando ocurre un error.
 
 ## Tecnologías Utilizadas
