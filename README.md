@@ -14,7 +14,7 @@ Se va a realizar una aplicación web con las siguientes características:
 * Debe tener también una vista detalle, donde se vea información concreta de algún recurso de la API.
 * Debe tener al menos un formulario para filtrar la información que se muestra.
 * La aplicación web debe tener hoja de estilo.
-* La aplicación web debe estar desplegada en Heroku.
+* La aplicación web debe estar desplegada en RENDER.
 
 ## Funcionalidades
 
