@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import tmdb
 import os
 app = Flask(__name__)
+api_key = os.getenv("API_KEY")
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
