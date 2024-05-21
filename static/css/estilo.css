@@ -52,36 +52,20 @@ nav a.activo {
     text-decoration: underline;
 }
 
-/* Left Images */
-.imagenes-lado-izquierdo {
-    position: fixed;
-    top: 30%; /* Ajusta la posición vertical */
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Ajusta el espacio entre las imágenes */
+/* Grid de Imágenes */
+.imagenes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     padding: 10px;
-    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.imagenes-lado-izquierdo img {
-    margin-bottom: 20px;
+.imagenes-grid img {
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-.imagenes-lado-izquierdo img#netflix {
-    width: 120px; /* Ajusta el tamaño del logo de Netflix */
-    height: auto;
-}
-
-.imagenes-lado-izquierdo img#campana {
-    width: 60px; /* Ajusta el tamaño de la campana */
-    height: auto;
-}
-
-.imagenes-lado-izquierdo img#jurassic {
-    width: 180px; /* Ajusta el tamaño del logo de la película */
+    width: 100%;
     height: auto;
 }
 
@@ -100,9 +84,9 @@ nav a.activo {
 }
 
 .contenido-principal {
-    margin-top: 50px; /* Añade un margen superior para separar del header */
+    margin-top: 50px;
     padding: 40px;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente para mejorar legibilidad */
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -116,7 +100,7 @@ nav a.activo {
     padding: 20px;
     border: 1px solid #444;
     border-radius: 10px;
-    background-color: rgba(28, 28, 28, 0.9); /* Fondo semi-transparente para mejor legibilidad */
+    background-color: rgba(28, 28, 28, 0.9);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
