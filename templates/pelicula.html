@@ -24,9 +24,6 @@
 
     <main>
         <div class="contenedor">
-            <div class="imagenes-lado-izquierdo">
-                
-            </div>
             <div class="contenido-principal">
                 <h1>Detalles de la Película</h1>
                 {% if pelicula %}
@@ -34,6 +31,16 @@
                         <h2>{{ pelicula.title }}</h2>
                         <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }} Poster">
                         <p>{{ pelicula.overview }}</p>
+                    </div>
+                    <div class="imagenes-grid">
+                        {% for related in related_peliculas %}
+                            <div class="pelicula-item">
+                                <a href="{{ url_for('detalle_pelicula', id=related.id) }}">
+                                    <img src="https://image.tmdb.org/t/p/w500{{ related.poster_path }}" alt="{{ related.title }} Poster">
+                                    <h2>{{ related.title }}</h2>
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
                 {% else %}
                     <p>No se encontraron detalles de la película.</p>
