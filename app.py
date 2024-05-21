@@ -3,7 +3,7 @@ import tmdb
 import os
 
 app = Flask(__name__)
-api_key = os.getenv("API_KEY")  
+api_key = os.getenv("api_key")  
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
