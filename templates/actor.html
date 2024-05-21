@@ -24,9 +24,6 @@
 
     <main>
         <div class="contenedor">
-            <div class="imagenes-lado-izquierdo">
-                
-            </div>
             <div class="contenido-principal">
                 <h1>Detalles del Actor</h1>
                 {% if actor %}
@@ -41,6 +38,16 @@
                                 <li>{{ movie.title }} ({{ movie.release_date }})</li>
                             {% endfor %}
                         </ul>
+                    </div>
+                    <div class="imagenes-grid">
+                        {% for pelicula in actor.known_for %}
+                            <div class="pelicula-item">
+                                <a href="{{ url_for('detalle_pelicula', id=pelicula.id) }}">
+                                    <img src="https://image.tmdb.org/t/p/w500{{ pelicula.poster_path }}" alt="{{ pelicula.title }} Poster">
+                                    <h2>{{ pelicula.title }}</h2>
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
                 {% else %}
                     <p>No se encontraron detalles del actor.</p>
