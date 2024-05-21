@@ -12,7 +12,7 @@ def index():
         title = request.form.get('title')
         if title:
             peliculas = tmdb.buscar_peliculas(title)
-            peliculas.sort(key=lambda x: x['title'])  # Añadidio alfabeticamente de las pelis
+            peliculas.sort(key=lambda x: x['title'])  # Ordenar alfabéticamente
             if not peliculas:
                 error = "No se encontraron películas con ese título."
         else:
@@ -32,7 +32,7 @@ def buscar_actores():
         name = request.form.get('name')
         if name:
             actores = tmdb.buscar_actores(name)
-            actores.sort(key=lambda x: x['name'])  # le he añadido esto, para ewl orden alfabetico
+            actores.sort(key=lambda x: x['name'])  # Ordenar alfabéticamente
             if not actores:
                 error = "No se encontraron actores con ese nombre."
         else:
@@ -43,6 +43,8 @@ def buscar_actores():
 def detalle_actor(id):
     actor = tmdb.obtener_detalle_actor(id)
     return render_template('actor.html', actor=actor)
+
+if __name__ == '__main__':
 
 
 app.run('0.0.0.0',int(port), debug=False) 
