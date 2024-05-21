@@ -45,4 +45,4 @@ def detalle_actor(id):
     return render_template('actor.html', actor=actor)
 
 
-app.run("0.0.0.0",port,debug=False)
+app.run('0.0.0.0',int(port), debug=False) 
