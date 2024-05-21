@@ -54,7 +54,7 @@ def buscar_actores(query):
         'language': 'es-ES'
     }
     response = requests.get(url, params=params)
-    if response.status_code == 200):
+    if response.status_code == 200:
         results = response.json().get('results', [])
         results.sort(key=lambda x: x['name'])  # Ordenar alfabéticamente
         return results
