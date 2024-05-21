@@ -24,9 +24,6 @@
 
     <main>
         <div class="contenedor">
-            <div class="imagenes-lado-izquierdo">
-                <!-- Imágenes -->
-            </div>
             <div class="contenido-principal">
                 <h3 class="titulo">Buscar Actores</h3>
                 <form action="/buscar_actores" method="post" class="formulario-busqueda">
@@ -37,7 +34,7 @@
                     <p class="error">{{ error }}</p>
                 {% endif %}
                 {% if actores %}
-                    <div class="actores-grid">
+                    <div class="imagenes-grid">
                         {% for actor in actores %}
                             <div class="actor-item">
                                 <a href="{{ url_for('detalle_actor', id=actor.id) }}">
