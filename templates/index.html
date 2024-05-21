@@ -24,9 +24,6 @@
 
     <main>
         <div class="contenedor">
-            <div class="imagenes-lado-izquierdo">
-                <!-- Imágenes -->
-            </div>
             <div class="contenido-principal">
                 <h3 class="titulo">Buscar Película</h3>
                 <form action="/" method="post" class="formulario-busqueda">
@@ -37,7 +34,7 @@
                     <p class="error">{{ error }}</p>
                 {% endif %}
                 {% if peliculas %}
-                    <div class="peliculas-grid">
+                    <div class="imagenes-grid">
                         {% for pelicula in peliculas %}
                             <div class="pelicula-item">
                                 <a href="{{ url_for('detalle_pelicula', id=pelicula.id) }}">
