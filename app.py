@@ -45,5 +45,4 @@ def detalle_actor(id):
     return render_template('actor.html', actor=actor)
 
 
-if __name__ == '__main__':
-     app.run(host='0.0.0.0', port=port, debug=True)
+app.run("0.0.0.0",port,debug=False)
