@@ -1,6 +1,5 @@
 import requests
 
-API_KEY = api_key = "1b5e4c5722010f132052504f17ae4c6c"
 BASE_URL = 'https://api.themoviedb.org/3'
 
 def buscar_peliculas(query):
